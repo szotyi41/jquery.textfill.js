@@ -1,5 +1,5 @@
 (function($) {
-    $.fn.textfill = function(options = { minFontSize: 8, maxFontSize: 30, setLineHeight: false, lineHeightGap: 0, disableWordWrap: false, fillVertically: true, debug: false, firstElement: 'div' }) {
+    $.fn.textfill = function(options = { minFontSize: 8, maxFontSize: 30, setLineHeight: false, lineHeightGap: 0, disableWordWrap: false, debug: false, firstElement: 'div' }) {
 
         return this.each(function() {
 
@@ -26,10 +26,10 @@
                 // Log status
                 if (options.debug === true) {
                     console.log(
-                        'At text', $(text).text(),
-                        'Container width',  containerWidth, 'is larger than', textWidth, containerWidth > textWidth, 
-                        'Container height', containerHeight, 'is larger than', textHeight, containerHeight > textHeight,
-                        'Font size increased to', fontSize
+                        containerWidth, textWidth, containerWidth > textWidth, 
+                        containerHeight, textHeight, containerHeight > textHeight,
+                        fontSize,
+                        text.text()
                     );
                 }
 
@@ -46,11 +46,15 @@
                 
 
             } while (
+
                 // Fill to container horizontally
-                (textHeight > containerHeight || textWidth > containerWidth) && 
+                ((textWidth > containerWidth) || (textHeight > containerHeight)) &&
+                
+                // Minimum font size
+                (fontSize > options.minFontSize) && 
 
                 // Maximum font size
-                (fontSize > options.minFontSize && fontSize < options.maxFontSize)
+                (fontSize < options.maxFontSize)
             );
 
         });
