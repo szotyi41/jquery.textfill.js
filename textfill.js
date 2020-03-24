@@ -1,5 +1,5 @@
 (function($) {
-    $.fn.textfill = function(options = { minFontSize: 8, maxFontSize: 30, setLineHeight: false, lineHeightGap: 0, disableWordWrap: false, fillVertically: true, debug: false, options.firstElement: 'div' }) {
+    $.fn.textfill = function(options = { minFontSize: 8, maxFontSize: 30, setLineHeight: false, lineHeightGap: 0, disableWordWrap: false, fillVertically: true, debug: false, firstElement: 'div' }) {
 
         return this.each(function() {
 
