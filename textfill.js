@@ -35,7 +35,7 @@
 
                 // Set font size
                 $(text).css({
-                    'display': 'inline-block',
+                    'display': 'inline',
                     'font-size': fontSize + 'px'
                 });
 
@@ -48,7 +48,7 @@
             } while (
 
                 // Fill to container horizontally
-                ((textWidth > containerWidth) || (textHeight > containerHeight)) &&
+                ((textWidth >= containerWidth) || (textHeight >= containerHeight)) &&
                 
                 // Minimum font size
                 (fontSize > options.minFontSize) && 
